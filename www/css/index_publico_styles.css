@@ -1,0 +1,654 @@
+/*Inicio de estilos para pagina principal*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: white;
+}
+
+.tamañoBotonesMiCuenta {
+    width: 120px;
+    height: 120px;
+  }
+
+body,
+nav {
+    background-color: #16181D;
+}
+
+.form-check-input{
+    background-color: #16181D !important;
+}
+
+.form-check-input:checked{
+    background-color: #456ed4 !important;
+}
+
+.tituloProducto {
+    font-family: 'Roboto Mono', sans-serif;
+    letter-spacing: 1px;
+    font-size: 12px;
+    padding-top: 5px;
+    text-align: start;
+    color: white;
+}
+
+.personalizacionPolus3 {
+    background-color: #16181D;
+    border: hidden;
+    color: white;
+    border-radius: 16px;
+    padding: 10px;
+    width: 240px;
+    margin-bottom: 16px;
+}
+
+.cantidadProducto {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 22px;
+    text-align: center;
+    color: white;
+}
+
+.personalizacionPolus3:focus {
+    background-color: #16181D;
+    border: hidden;
+    color: white;
+    width: 240px;
+}
+
+.textoProducto3 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+.navbar {
+    background-color: #16181D;
+    font-family: 'Nunito', sans-serif;
+    min-height: 90px;
+}
+
+button {
+    font-family: 'Nunito', sans-serif;
+}
+
+p {
+    color: rgb(255, 255, 255);
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    text-align: justify;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.tarjetaDispositivo{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #22242C;
+    border-radius: 16px;
+}
+
+.titulos {
+    color: rgb(255, 255, 255);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 60px;
+    font-weight: 300;
+}
+
+.titulos2 {
+    color: rgb(255, 255, 255);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.titulos3 {
+    color: rgb(255, 255, 255);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+}
+
+
+
+#imagen {
+    margin: auto;
+    display: block;
+    width: 500px;
+    margin-top: 3%;
+}
+
+.boton {
+    font-size: 14px;
+    padding: 20px 0px;
+    min-width: 200px;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.2s;
+    background-color: #4A43BB;
+    color: rgb(255, 255, 255);
+    border: 0;
+    border-radius: 24px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 100%;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+.boton:hover {
+    background-color: #ffffff;
+    color: black;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.boton2 {
+    font-size: 16px;
+    padding: 16px 26px;
+    min-width: 100px;
+    border-radius: 2px;
+    display: inline-block;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.2s;
+    background-color: #22242C;
+    color: white;
+    border: 0;
+    border-radius: 24px;
+    font-family: 'Nunito', sans-serif;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.boton2:hover {
+    background-color: #ffffff;
+    color: black;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.botonEstilo {
+    border-radius: 24px;
+    padding: 10px 20px;
+    min-width: 200px;
+    margin-bottom: 3%;
+}
+
+#carrito {
+    margin-right: 15px;
+    font-size: 15px;
+}
+
+#parrafo {
+    /*margin-top: 100px;*/
+    text-align: center;
+}
+
+.parrafo {
+    margin-top: 10px;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.parrafo2 {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.tituloMiCuenta {
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+
+.bordeDivFotografia {
+    content: " ";
+    width: 170px;
+    height: 170px;
+    border: 3px dashed rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 170px;
+}
+
+.divFotografia {
+    content: " ";
+    width: 150px;
+    height: 150px;
+    border: 2px solid dark;
+    border-radius: 150px;
+}
+
+.centrarContenido{
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.fotografiaPerfil {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.fotografiaPerfil2 {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+
+.divFotografia2 {
+    content: " ";
+    width: 100px;
+    height: 100px;
+    border-radius: 150px;
+    background-color: rgb(158, 158, 158);
+}
+
+#contenedorPrincipal {
+    margin-bottom: 0px;
+}
+
+.paddingParrafo {
+    margin-top: 20px;
+    padding-right: 60px;
+    padding-left: 60px;
+}
+
+.dropdown-menu-dark {
+    background-color: #22242C;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.contenedor {
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0;
+    border-radius: 2px;
+}
+
+.contenedor img {
+    -moz-transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
+.contenedor:hover img {
+    -moz-transforms: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.subtitulo {
+    color: #ffffff;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+}
+
+.descripcion {
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}
+
+#contenedorCategorias {
+    padding-top: 100px;
+    background-color: #22242C;
+}
+
+#acercaNosotros {
+    background-color: #16181D;
+    color: white;
+    padding-top: 100px;
+}
+
+#productos {
+    transition: all 0.5s ease;
+}
+
+#productos:hover {
+    transform: scale(0.9);
+}
+
+.centrarImagenes {
+    margin-top: 100px;
+    margin: auto;
+    display: block;
+}
+
+.centrarImagenes2 {
+    margin: auto;
+    display: block;
+}
+
+#lista li {
+    display: inline;
+}
+
+.textoFooter {
+    margin-top: 2E6E6E7px;
+    padding-left: 120px;
+    font-size: 14px;
+    color: #B5B6B8
+}
+
+.padding1Link {
+    padding-left: 110px;
+    color: #E6E6E7;
+    font-size: 14px;
+}
+
+.paddingLink {
+    padding-left: 10px;
+    color: #E6E6E7;
+    font-size: 14px;
+}
+
+.problemaTexto {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    padding-left: 50px;
+}
+
+.problemaParrafo {
+    margin-top: 100px;
+}
+
+.carousel-inner {
+    height: 350px !important;
+}
+
+.fotografiaPerfil2 {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+
+.carousel-inner>.item>img {
+    object-fit: cover !important;
+}
+
+.botonCategoria {
+    width: 200px;
+    height: 200px;
+    background-color: #22242C;
+    margin: 40px;
+    color: white;
+    border: 4px dashed transparent;
+    border-radius: 24px;
+    transition: border-radius 0.4s, background-color 0.4s, border 0.4s;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.botonCategoria:hover {
+    width: 200px;
+    height: 200px;
+    background-color: #16181D;
+    border: 4px dashed white;
+    border-radius: 60px;
+    margin: 40px;
+    color: white;
+}
+
+.texto {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300%;
+    text-align: center;
+    letter-spacing: 1px;
+    color: rgb(210, 210, 210);
+    ;
+}
+
+.personalizacionPolus {
+    background-color: #16181D;
+    border: hidden;
+    color: white;
+    border-radius: 16px;
+    padding: 10px;
+}
+
+
+.form-control[readonly].no-gray {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+
+.personalizacionPolus:focus {
+    background-color: #16181D;
+    border: hidden;
+    color: white;
+}
+
+.personalizacionPolus2 {
+    background-color: #22242C;
+    border: hidden;
+    color: white;
+    border-radius: 16px;
+    padding: 10px;
+    width: 240px;
+    margin-bottom: 16px;
+}
+
+.personalizacionPolus2:focus {
+    background-color: #22242C;
+    border: hidden;
+    color: white;
+    width: 240px;
+}
+
+.modal-title {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+}
+
+.modal-content {
+    background-color: #22242C;
+}
+
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
+}
+
+td,
+th {
+    color: white !important;
+    text-align: center;
+}
+
+.contadorCantidad {
+    font-size: 16px !important;
+}
+
+.botonContador {
+    width: 30px;
+    height: 30px;
+    font-size: 8px;
+}
+
+.accordion-item {
+    background-color: #22242C !important;
+    border-bottom: rgb(255, 255, 255) !important;
+}
+
+.tituloConfirmacion {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    color: white;
+    font-size: 16px;
+}
+
+.tituloInformacion {
+    font-family: 'Roboto Mono', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+.informacionCliente {
+    font-family: 'Nunito', sans-serif;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+.accordion-button {
+    background-color: #16181D !important;
+    color: white !important;
+    border: 2px dashed #16181D;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 14px !important;
+
+}
+
+#seccionInfo {
+    background-color: #16181D;
+}
+
+.paddingUsername {
+    padding-top: 7px !important;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: white !important;
+}
+
+.paddingFlecha {
+    padding-top: 11px !important;
+}
+
+@media screen and (max-width:999px) {
+
+    #fila {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #fotoPerfil {
+        width: 35px !important;
+        margin-right: 10px !important;
+    }
+
+    .paddingFlecha {
+        display: none;
+    }
+
+    #title {
+        order: 2;
+    }
+
+    #imagen {
+        order: 1;
+
+    }
+
+    #categoria {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
+
+@media screen and (max-width:1200px) {
+
+    #title {
+        width: 450px;
+        margin-top: 30px;
+    }
+
+    .imag1 {
+        width: 330px !important;
+        height: 300px !important;
+    }
+
+    .imag {
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+    .textoPequeño {
+        font-size: 36px;
+    }
+
+    .navbar {
+        min-height: 30px;
+    }
+
+    .textoFooter {
+        margin-top: 2E6E6E7px;
+        padding-left: 20px;
+        font-size: 14px;
+        color: #B5B6B8
+    }
+
+    .padding1Link {
+        padding-left: 9px;
+        color: #E6E6E7;
+        font-size: 14px;
+    }
+
+    .paddingLink {
+        padding-left: 5px;
+        color: #E6E6E7;
+        font-size: 14px;
+    }
+
+    .problemaTexto {
+        text-align: center;
+        margin-top: 100px;
+        margin-bottom: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .problemaParrafo {
+        margin-top: 30px;
+    }
+
+    .carousel-inner {
+        height: 200px !important;
+    }
+
+    #informacionClienteContenido {
+        flex-direction: column !important;
+    }
+
+}
+
+input.error {
+    border: 2px dashed red;
+  }
+  
+  input.success {
+    border: 2px solid green;
+  }
+  
+  textarea.error {
+    border: 2px dashed red;
+  }
+  
+  textarea.success {
+    border: 2px solid green;
+  }

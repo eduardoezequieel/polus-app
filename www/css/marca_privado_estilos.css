@@ -1,0 +1,162 @@
+* {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+
+body {
+   
+}
+
+.titulo1{
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    font-size: 16px;
+    padding-left: 25px;
+    letter-spacing: 1px;
+    margin-top:30px;
+}
+
+.margenIconos {
+    margin-right: 20px;
+}
+
+.title{
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+.imagenUsuario{
+    width: 40px;
+    border-radius: 20%;
+    align-items: flex-end;
+}
+
+#barraInicial{
+    margin-top: 5px;
+}
+
+#Cantidad{
+    width: 150px;
+}
+
+.widthControles{
+    width: 400px;
+}
+
+.imagenSeparator{
+    margin-top: -50px;
+    width: 270px;
+    margin-left: 40px;
+}
+
+.apartado{
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+    margin-left: 40px;
+}
+
+.formulario{
+    margin-left: 40px;
+}
+
+.imagenUsuario1{
+    width: 120px;
+    border-radius: 20%;
+    margin-left: 30px;
+}
+
+
+
+#agregarFoto{
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.formulario1{
+    margin-left: 40px;
+   
+}
+
+.formulario2{
+    margin-left: 200px;
+   
+}
+
+#selecciona{
+    width: 140px;
+    margin-left: 50px;
+}
+
+#selecciona3{
+    width: 130px;
+    margin-left: 20px;
+}
+
+#selecciona8{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#selecciona7{
+    width: 130px;
+    margin-left: 10px;
+}
+
+#selecciona1{
+    width: 140px;
+    margin-left: 50px;
+}
+
+.tabla{
+    color: white;
+    
+}
+
+.formulario0{
+    margin-left: 162px;
+}
+
+@media screen and (max-width:1200px){
+
+    .apartado{
+        margin-left: 0px;
+    }
+    
+    .formulario{
+        margin-left: 0px;
+    }
+    
+    .imagenSeparator{
+        margin-left: 0px;
+    }
+
+    .formulario1{
+        margin-left: 0px;
+       
+    }
+    
+    .formulario2{
+        margin-left: 0px;
+       
+    }
+
+    
+
+}
+
+@media screen and (max-width:650px){
+
+    #selecciona1{
+        margin-top: 20px;
+        margin-left: 150px;
+    }
+
+}

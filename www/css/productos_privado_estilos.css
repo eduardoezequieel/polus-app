@@ -1,0 +1,182 @@
+* {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+
+body {
+    overflow-x: unset !important;
+}
+
+.titulo1{
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    font-size: 16px;
+    padding-left: 25px;
+    letter-spacing: 1px;
+    margin-top:30px;
+}
+
+.margenIconos {
+    margin-right: 20px;
+}
+
+.title{
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+.imagenUsuario{
+    width: 40px;
+    border-radius: 20%;
+    align-items: flex-end;
+}
+
+#barraInicial{
+    margin-top: 5px;
+}
+
+.imagenGrafica{
+    margin: auto;
+    display: block;
+    width: 280px;
+}
+
+.imagenSeparator{
+    margin-top: -50px;
+    width: 300px;
+    margin-left: 40px;
+}
+
+.apartado{
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+    margin-left: 40px;
+}
+
+.formulario2{
+    margin-left: 200px;
+   
+}
+
+.apartado1{
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+    margin-left: 0px;
+}
+
+.formulario{
+    margin-left: 45px;
+}
+
+
+.imagenSeparator1{
+    margin-top: -50px;
+    width: 300px;
+    margin-left: 0px;
+}
+
+.foto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#selecciona{
+    width: 140px;
+}
+
+#selecciona1{
+    width: 140px;
+    margin-left: 50px;
+}
+
+#agregarFoto{
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.imagenUsuario1{
+    width: 150px;
+    margin-left: 30px;
+}
+
+.tabla{
+    color: white;
+}
+
+.formulario4{
+    margin-left: 30px;
+}
+
+.selecciona8{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#cbProducto{
+    width: 300px !important;
+}
+
+@media screen and (max-width:950px){
+
+    .apartado{
+        margin-left: 0px;
+    }
+    
+    .formulario{
+        margin-left: 0px;
+    }
+    
+    .imagenSeparator{
+        margin-left: 0px;
+    }
+
+    .formulario1{
+        margin-left: 0px;
+       
+    }
+    
+    .formulario2{
+        margin-left: 0px;
+       
+    }
+
+    .imagenUsuario1{
+        margin-left: 0px;
+    }
+
+    #agregarFoto{
+        margin-left: 0px;
+    }
+
+    .formulario4{
+        margin-left:0px;
+    }
+
+    #search-resena-form{
+        flex-direction: column !important;
+    }
+
+    .margen{
+        margin-top: 10px !important;
+    }
+
+    #filtrosBusqueda{
+        flex-direction: column !important;
+    }
+
+}
+
+.modal {
+    overflow-y:auto !important;
+  }

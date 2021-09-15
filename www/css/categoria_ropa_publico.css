@@ -1,0 +1,83 @@
+:root {
+    --black: #1a1a1a;
+    --white: #fff;
+    --green: #49b293;
+  }
+   
+  .posts {
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+   
+  .posts .post {
+    background: #fafafa;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+   
+  .posts .post-title {
+    font-size: 1.3rem;
+  }
+   
+  .posts .post-title:hover {
+    text-decoration: underline;
+  }
+   
+  .posts figcaption {
+    padding: 1rem;
+  }
+   
+  .posts .post-categories {
+    margin-bottom: 0.75rem;
+    font-size: .75rem;
+  }
+   
+  .posts .post-categories * {
+    display: inline-block;
+  }
+   
+  .posts .post-categories li {
+    margin-bottom: 0.2rem;
+  }
+   
+  .posts .post-categories a {
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    border: 1px solid;
+    line-height: normal;
+    background: all 0.1s;
+  }
+   
+  .posts .post-categories a:hover {
+    background: var(--green);
+    color: var(--white);
+  }
+   
+  @media screen and (max-width: 900px) {
+    .posts {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+   
+  @media screen and (max-width: 650px) {
+    .posts {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  :root {
+    --black: #1a1a1a;
+    --white: #fff;
+    --green: #49b293;
+  }
+   
+  [value="All"]:checked ~ .filters [for="All"],
+  [value="CSS"]:checked ~ .filters [for="CSS"],
+  [value="JavaScript"]:checked ~ .filters [for="JavaScript"],
+  [value="jQuery"]:checked ~ .filters [for="jQuery"],
+  [value="WordPress"]:checked ~ .filters [for="WordPress"],
+  [value="Slider"]:checked ~ .filters [for="Slider"],
+  [value="fullPage.js"]:checked ~ .filters [for="fullPage.js"] {
+    background: var(--green);
+    color: var(--white);
+  }

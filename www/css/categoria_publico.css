@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+#filtro{
+    box-shadow: 1px 2px 8px black;
+}
+
+#categoria{
+    box-shadow: 0 8px 6px -6px black;
+}
+
+.imagenProducto5{
+    width: 225px !important;
+    height: 225px !important;
+    object-fit:cover !important;
+    display: block;
+    border-radius: 15px;
+}
+
+
+
+h3{
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    font-size: 25px;
+    letter-spacing: 1px;
+    /*margin-top:20px;*/
+}
+
+h1{
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    letter-spacing: 1px;
+
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h4{
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    font-size: 20px;
+    letter-spacing: 1px;
+ 
+}
+
+.card{
+    color: white;
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 10px;
+    height: 97%;
+}
+
+.card-footer{
+    margin-bottom: 10px;
+}
+
+.imagenCard{
+    width: 50px;
+}
+
+.btnCategoria{
+    width: 250px;
+    height: 280px;
+    background-color: #22242C;
+    margin: 40px;
+    color: white;
+    border: 4px dashed transparent;
+    border-radius: 24px;
+    transition: border-radius 0.4s, background-color 0.4s, border 0.4s;
+    font-family: 'Quicksand',sans-serif;
+    font-weight: 700;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+}
+
+.btnCategoria:hover{
+    width: 250px;
+    height: 280px;
+    background-color: #1c1f25;
+    margin: 40px;
+    color: white;
+}
+
+.divFotoproducto{
+    height: 150;
+}
+
+.tituloProducto{
+    font-family: 'Roboto Mono', sans-serif;
+    letter-spacing: 1px;
+    font-size: 12px;
+    padding-top: 5px;
+    text-align: start;
+}
+
+.textoProducto{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 12px;
+    text-align: center;
+}
+
+.textoProducto3{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+.cantidadProducto{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 22px;
+    text-align: center;
+}
+
+.textoPrecio{
+    font-family: 'Roboto Mono',sans-serif;
+    font-size: 12px;
+    border: 2px dashed white;
+    border-radius: 14px;
+    background-color: #16181D;
+    padding: 10px;
+}
+
+.encajarImagen{
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.imagenPrincipal{
+    height: 270px;
+    width: 100%;
+}
+
+.personalizacionPolus3{
+    background-color: #16181D;
+    border: hidden;
+    color:white;
+    border-radius: 16px;
+    padding: 10px;
+    width: 240px;
+    margin-bottom: 16px;
+}
+
+.personalizacionPolus3:focus{
+    background-color: #16181D;
+    border: hidden;
+    color:white; 
+    width: 240px;
+}
+
+@media screen and (max-width:999px){
+
+    .card{
+
+        margin-right: 1px;
+
+    }
+}
+

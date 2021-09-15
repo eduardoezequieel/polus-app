@@ -1,0 +1,83 @@
+  .titulo1{
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    font-size: 16px;
+    padding-left: 25px;
+    letter-spacing: 1px;
+    margin-top:30px;
+}
+
+.margenIconos {
+    margin-right: 20px;
+}
+
+
+.title{
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+.tabla{
+    color: white;
+}
+
+.imagenUsuario{
+    width: 40px;
+    border-radius: 20%;
+    align-items: flex-end;
+}
+
+a{
+    text-decoration: none  ;
+}
+
+
+#barraInicial{
+    margin-top: 0px;
+}
+
+.imagenGrafica{
+    margin: auto;
+    display: block;
+    width: 280px;
+}
+
+#search{
+    width: 500px !important;
+}
+
+.labelInformacion{
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: rgb(99, 99, 99);
+}
+
+@media screen and (max-width:1200px) {
+    #search{
+        width: 200px !important;
+    }
+}
+
+.tituloUsuarios{
+    margin-top: 12px;
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.titleDescripcion{
+    margin-top: 12px;
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.verMas{
+    margin: auto;
+    display: block;
+}

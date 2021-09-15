@@ -1,0 +1,117 @@
+* {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+
+body {
+    overflow-y: scroll;
+}
+
+.titulo1{
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    font-size: 16px;
+    padding-left: 25px;
+    letter-spacing: 1px;
+    margin-top:30px;
+}
+
+.margenIconos {
+    margin-right: 20px;
+}
+
+.title{
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+.imagenUsuario{
+    width: 40px;
+    border-radius: 20%;
+    align-items: flex-end;
+}
+
+#barraInicial{
+    margin-top: 5px;
+}
+
+#Cantidad{
+    width: 150px;
+}
+
+.imagenSeparator{
+    margin-top: -50px;
+    width: 270px;
+    margin-left: 55px;
+}
+
+.apartado{
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+    margin-left: 55px;
+}
+
+.formulario{
+    margin-left: 55px;
+}
+
+.imagen1{
+    width: 75px;
+}
+
+#agregarFoto{
+    width: 80px;
+    margin-top: 10px;
+}
+
+.formulario1{
+    margin-left: 40px;
+   
+}
+
+.formulario2{
+    margin-left: 200px;
+   
+}
+
+#selecciona{
+    width: 140px;
+
+}
+
+.tabla{
+    color: white;
+    
+}
+
+@media screen and (max-width:1200px){
+
+    .apartado{
+        margin-left: 0px;
+    }
+    
+    .formulario{
+        margin-left: 0px;
+    }
+    
+    .imagenSeparator{
+        margin-left: 0px;
+    }
+
+    .formulario1{
+        margin-left: 0px;
+       
+    }
+    
+    .formulario2{
+        margin-left: 0px;
+       
+    }
+
+}
