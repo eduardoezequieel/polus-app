@@ -1,5 +1,5 @@
 //Constante de la ruta para la API
-const API_CLIENT = '../../app/api/public/clientes.php?action=';
+const API_CLIENT = 'http://34.125.116.235/app/api/public/clientes.php?action=';
 
 document.addEventListener('DOMContentLoaded', function(){
     // Se llama a la función que asigna el token del reCAPTCHA al formulario.
@@ -68,7 +68,7 @@ document.getElementById('register-form').addEventListener('submit', function(eve
             request.json().then(function(response){
                 //Verificando respuesta satisfactoria
                 if(response.status){
-                    sweetAlert(1, response.message, 'iniciar_sesion.php');
+                    sweetAlert(1, response.message, 'iniciar_sesion.html');
                 } else{
                     sweetAlert(4, response.exception, null);
                     // Se genera un nuevo token.

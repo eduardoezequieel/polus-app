@@ -54,13 +54,13 @@ function previewSavePicture(idDivFoto, name, foto){
     let ruta;
     switch (foto) {
         case 1:
-            ruta = '../../resources/img/dashboard_img/admon_fotos/';
+            ruta = 'http://34.125.116.235/resources/img/dashboard_img/admon_fotos/';
             break;
         case 2:
-            ruta = '../../resources/img/dashboard_img/cliente_fotos/'
+            ruta = 'http://34.125.116.235/resources/img/dashboard_img/cliente_fotos/'
             break;
         case 3:
-            ruta = '../../resources/img/dashboard_img/producto_fotos/';
+            ruta = 'http://34.125.116.235/resources/img/dashboard_img/producto_fotos/';
             break;
         default:
             break;
