@@ -26,10 +26,10 @@ document.getElementById('login-form').addEventListener('submit', function (event
                         sendVerificationCode();
                         openModal('validarCodigo');
                     } else if (response.auth == 'no') {
-                        sweetAlert(1, response.message, 'index.php');
+                        sweetAlert(1, response.message, 'index.html');
                     }
                 } else if (response.error) {
-                    sweetAlert(3,response.message, 'cambiar_clave.php');
+                    sweetAlert(3,response.message, 'cambiar_clave.html');
                 }
                 else {
                     sweetAlert(2, response.exception, null);
@@ -79,7 +79,7 @@ document.getElementById('validarCodigo-form').addEventListener('submit', functio
                 //Verificando respuesta satisfactoria
                 if(response.status){
                     closeModal('validarCodigo');
-                    sweetAlert(1, response.message, 'index.php');
+                    sweetAlert(1, response.message, 'index.html');
                 } else {
                     sweetAlert(2, response.exception, null);
                 }

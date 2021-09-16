@@ -19,7 +19,7 @@ document.getElementById('codigo-form').addEventListener('submit', function(event
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     console.log(response.token)
-                    sweetAlert(1, response.message, 'recuperar_clave.php');
+                    sweetAlert(1, response.message, 'recuperar_clave.html');
                 } else if (response.error) {
                     sweetAlert(3,response.message, null);
                 }

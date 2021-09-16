@@ -24,7 +24,7 @@ document.getElementById('correo-form').addEventListener('submit', function (even
                             request.json().then(function (response) {
                                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                                 if (response.status) {
-                                    window.location.replace("ingresar_codigo_correo.php");
+                                    window.location.replace("ingresar_codigo_correo.html");
                                 } else if (response.error) {
                                     sweetAlert(3,response.message, null);
                                 }

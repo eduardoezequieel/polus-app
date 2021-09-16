@@ -42,7 +42,7 @@ function readClientRecord() {
                                             <h5 class="mx-1">
                                             </h1>
 
-                                            <a href="../../app/reports/public/comprobante_compra.php?id=${row.idpedido}" target="_blank" data-tooltip="Comprabante de compra"
+                                            <a href="../../app/reports/public/comprobante_compra.html?id=${row.idpedido}" target="_blank" data-tooltip="Comprabante de compra"
                                                 class="btn btn-outline-secondary"><i class="fas fa-book"></i></a>
 
                                         </div>
@@ -103,7 +103,7 @@ function fillCategories(dataset){
     let content = ' ';
 
     dataset.map(function(row){
-        url = `categoria.php?id=${row.idcategoria}&name=${row.categoria}`;
+        url = `categoria.html?id=${row.idcategoria}&name=${row.categoria}`;
 
         content += `
         <li><a class="dropdown-item" href="${url}">${row.categoria}</a></li>
@@ -162,7 +162,7 @@ function logOutCliente() {
                     request.json().then(function (response) {
                         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                         if (response.status) {
-                            sweetAlert(1, response.message, 'index.php');
+                            sweetAlert(1, response.message, 'index.html');
                         } else {
                             sweetAlert(2, response.exception, null);
                         }
@@ -583,7 +583,7 @@ function finishOrderCart() {
                     request.json().then(function (response) {
                         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                         if (response.status) {
-                            sweetAlert(1, response.message, 'index.php');
+                            sweetAlert(1, response.message, 'index.html');
                         } else {
                             sweetAlert(2, response.exception, null);
                         }

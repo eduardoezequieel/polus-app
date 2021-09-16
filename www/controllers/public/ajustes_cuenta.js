@@ -108,7 +108,7 @@ function deleteSessionHistory(id) {
                         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                         if (response.status) {
                             // Se cargan nuevamente las filas en la tabla de la vista después de borrar un registro.
-                            sweetAlert(1, response.message, 'mi_cuenta.php');
+                            sweetAlert(1, response.message, 'mi_cuenta.html');
                         } else {
                             sweetAlert(2, response.exception, null);
                             console.log(response.status + ' ' + response.statusText);
@@ -150,9 +150,9 @@ document.getElementById('updateAuth-form').addEventListener('submit',function(ev
                     //Mandando mensaje de exito
                     closeModal('cambiarAuth');
                     if (document.getElementById('switchValue').value == 'si') {
-                        sweetAlert(1, 'Usted ha habilitado la autenticación en dos pasos, podra ver los cambios la proxima vez que inicie sesión.', 'mi_cuenta.php');
+                        sweetAlert(1, 'Usted ha habilitado la autenticación en dos pasos, podra ver los cambios la proxima vez que inicie sesión.', 'mi_cuenta.html');
                     } else if(document.getElementById('switchValue').value == 'no') {
-                        sweetAlert(1, 'Usted ha deshabilitado la autenticación en dos pasos, podra ver los cambios la proxima vez que inicie sesión.', 'mi_cuenta.php');
+                        sweetAlert(1, 'Usted ha deshabilitado la autenticación en dos pasos, podra ver los cambios la proxima vez que inicie sesión.', 'mi_cuenta.html');
                     }
                 } else{
                     sweetAlert(4, response.exception, null);
@@ -193,7 +193,7 @@ function obtenerInfo(){
                     }
                     previewSavePicture('divFoto', response.dataset.foto,2);
                 } else {
-                    sweetAlert(4, response.exception, 'index.php');
+                    sweetAlert(4, response.exception, 'index.html');
                 }
             });
         } else {
@@ -219,7 +219,7 @@ document.getElementById('micuenta-form').addEventListener('submit',function(even
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se cargan nuevamente las filas en la tabla de la vista después de agregar o modificar un registro.
-                    sweetAlert(1, response.message, 'mi_cuenta.php');
+                    sweetAlert(1, response.message, 'mi_cuenta.html');
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -247,7 +247,7 @@ document.getElementById('updateUser-form').addEventListener('submit',function(ev
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se cargan nuevamente las filas en la tabla de la vista después de agregar o modificar un registro.
-                    sweetAlert(1, response.message, 'mi_cuenta.php');
+                    sweetAlert(1, response.message, 'mi_cuenta.html');
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -275,7 +275,7 @@ document.getElementById('updateEmail-form').addEventListener('submit',function(e
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se cargan nuevamente las filas en la tabla de la vista después de agregar o modificar un registro.
-                    sweetAlert(1, response.message, 'mi_cuenta.php');
+                    sweetAlert(1, response.message, 'mi_cuenta.html');
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -303,7 +303,7 @@ document.getElementById('updatePassword-form').addEventListener('submit',functio
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se cargan nuevamente las filas en la tabla de la vista después de agregar o modificar un registro.
-                    sweetAlert(1, response.message, 'mi_cuenta.php');
+                    sweetAlert(1, response.message, 'mi_cuenta.html');
                 } else {
                     sweetAlert(2, response.exception, null);
                 }

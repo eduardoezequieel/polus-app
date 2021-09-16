@@ -155,7 +155,7 @@ function fillProducts(dataset, name){
     dataset.map(function (row) {
         
         // Se crean y concatenan las tarjetas con los datos de cada producto.
-        url = `producto.php?id=${row.idproducto}`;
+        url = `producto.html?id=${row.idproducto}`;
 
         content += `
         <div class="dropdown dropend col-xl-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center animate__animated animate__bounceIn">

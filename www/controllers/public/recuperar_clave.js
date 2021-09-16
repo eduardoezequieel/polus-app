@@ -16,7 +16,7 @@ document.getElementById('primeruso-form').addEventListener('submit', function (e
             request.json().then(response => {
                 //Verificando si la respuesta es satisfactoria de lo contrario se muestra la excepción
                 if (response.status) {
-                    sweetAlert(1, response.message, 'iniciar_sesion.php');
+                    sweetAlert(1, response.message, 'iniciar_sesion.html');
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
