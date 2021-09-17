@@ -1,5 +1,5 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_CLIENTES = '../../app/api/public/clientes.php?action=';
+const API_CLIENTES = 'http://34.125.116.235/app/api/public/clientes.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
