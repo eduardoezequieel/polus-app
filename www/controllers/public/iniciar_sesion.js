@@ -26,10 +26,10 @@ document.getElementById('login-form').addEventListener('submit', function (event
                         sendVerificationCode();
                         openModal('validarCodigo');
                     } else if (response.auth == 'no') {
-                        sweetAlert(1, response.message, 'index.html');
+                        sweetAlert(1, response.message, '../index.html');
                     }
                 } else if (response.error) {
-                    sweetAlert(3,response.message, 'cambiar_clave.html');
+                    sweetAlert(3,response.message, 'html/cambiar_clave.html');
                 }
                 else {
                     sweetAlert(2, response.exception, null);

@@ -144,7 +144,7 @@ function isLogged(){
                     console.log('dentro');
                     let content = '';
                     content += `
-                    <a class="navbar-brand" href="../../views/public/index.html">
+                    <a class="navbar-brand" href="../index.html">
                                 <img src="http://34.125.116.235/resources/img/p icono.png" alt="img-fluid" height="40px" width="40px">
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -178,8 +178,8 @@ function isLogged(){
                                 </form>
                                 <div class="dropdown">
                                     <button class="btn d-flex" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="http://34.125.116.235/resources/img/dashboard_img/cliente_fotos/foto.jpg" id="fotoPerfil" alt="" class="rounded-circle fotografiaPerfil2" width="40px">
-                                            <h5 class="text-center mx-3 paddingUsername">KathPrueba</h5>
+                                            <img src="http://34.125.116.235/resources/img/dashboard_img/cliente_fotos/${response.fotoCliente}" id="fotoPerfil" alt="" class="rounded-circle fotografiaPerfil2" width="40px">
+                                            <h5 class="text-center mx-3 paddingUsername">${response.usuarioCliente}</h5>
                                             <i class="fas fa-caret-down paddingFlecha"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-dark  animate__animated animate__bounceIn" aria-labelledby="dropdownMenuButton1">
@@ -197,7 +197,7 @@ function isLogged(){
                     console.log('fuera');
                 let content = '';
                 content += `
-                        <a class="navbar-brand" href="../../views/public/index.html">
+                        <a class="navbar-brand" href="../index.html">
                                 <img src="http://34.125.116.235/resources/img/p icono.png" alt="img-fluid" height="40px" width="40px">
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -227,8 +227,8 @@ function isLogged(){
                                 </ul>
                                 <form id="controlesNavbar">
                                     
-                                    <a href="../../views/public/iniciar_sesion.html" class="btn btn-outline-light">Acceder</a>
-                                    <a href="../../views/public/crear_cuenta.html" class="btn btn-outline-secondary">Registrarse</a>
+                                    <a href="html/iniciar_sesion.html" class="btn btn-outline-light">Acceder</a>
+                                    <a href="html/crear_cuenta.html" class="btn btn-outline-secondary">Registrarse</a>
                                     
                                 </form>
                             </div>

@@ -102,7 +102,7 @@ function fillCategories(dataset){
     let content = ' ';
 
     dataset.map(function(row){
-        url = `categoria.html?id=${row.idcategoria}&name=${row.categoria}`;
+        url = `html/categoria.html?id=${row.idcategoria}&name=${row.categoria}`;
 
         content += `
         <li><a class="dropdown-item" href="${url}">${row.categoria}</a></li>

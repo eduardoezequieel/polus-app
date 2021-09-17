@@ -4,6 +4,7 @@ const API_CATEGORIA = '../../app/api/public/categoria.php?action=';
 //Cuando se carga la pagina web
 document.addEventListener('DOMContentLoaded', function(){
     readCategories(API_CATEGORIA);
+    isLogged();
 });
 //Funcion para el llenado de tablas.
 function fillCategories(dataset){
