@@ -159,13 +159,13 @@ function isLogged(id,alias,foto){
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item dropdown" id="dropdownCategorias" onclick="readCategoriesDropdown()>
+                                <li class="nav-item dropdown" id="dropdownCategorias" onclick="readCategoriesDropdown()">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Categorías
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown" id="dropdownCategories-body">
-                                    
+
                                     </ul>
                                 </li>
 
@@ -190,7 +190,7 @@ function isLogged(id,alias,foto){
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-dark  animate__animated animate__bounceIn" aria-labelledby="dropdownMenuButton1">
                                         <li><a id="btnMisPedidos" onclick="readClientRecord()" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#pedidosClienteModal" href="#">Mis Pedidos</a></li>
-                                        <li><a id="btnMiCuenta" class="dropdown-item" href="mi_cuenta.html">Mi Cuenta</a></li>
+                                        <li><a id="btnMiCuenta" class="dropdown-item" href="html/mi_cuenta.html?id=${id}&alias=${alias}&foto=${foto}">Mi Cuenta</a></li>
                                         <li><a class="dropdown-item" href="#" onclick="logOutCliente(${id})">Cerrar Sesión</a></li>
                                     </ul>
                                 </div>  
@@ -266,7 +266,7 @@ function readCategoriesDropdown() {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     data = response.dataset;
-                    fillCategories(data);
+                    fillCategories1(data);
                 } else {
                     sweetAlert(4, response.exception, null);
                 }
@@ -278,6 +278,22 @@ function readCategoriesDropdown() {
         console.log(error);
     });
 }
+
+//Funcion para el llenado de tablas.
+function fillCategories1(dataset){
+    let content = ' ';
+
+    dataset.map(function(row){
+        url = `html/categoria.html?id=${row.idcategoria}&name=${row.categoria}`;
+
+        content += `
+        <li><a class="dropdown-item" href="${url}">${row.categoria}</a></li>
+        `
+    })
+
+    document.getElementById('dropdownCategories-body').innerHTML = content;
+}
+
 
 /*
 *   Función para obtener los resultados de una búsqueda en los mantenimientos de tablas (operación search).

@@ -102,20 +102,6 @@ function getProducts(id){
     });
 }
 
-//Funcion para el llenado de tablas.
-function fillCategories(dataset){
-    let content = ' ';
-
-    dataset.map(function(row){
-        url = `html/categoria.html?id=${row.idcategoria}&name=${row.categoria}`;
-
-        content += `
-        <li><a class="dropdown-item" href="${url}">${row.categoria}</a></li>
-        `
-    })
-
-    document.getElementById('dropdownCategories-body').innerHTML = content;
-}
 
 
 // Función para mostrar un mensaje de confirmación al momento de cerrar sesión.

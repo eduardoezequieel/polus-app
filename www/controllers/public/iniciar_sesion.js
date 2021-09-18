@@ -1,10 +1,9 @@
 let api_clientes;
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
-    params = new URLSearchParams(location.search)
+    let params = new URLSearchParams(location.search)
     // Se obtienen los datos localizados por medio de las variables.
     const id = params.get('id');
-    console.log(id);
     if (id > 0){
         // Constante para establecer la ruta y parámetros de comunicación con la API.
         api_clientes = `http://34.125.116.235/app/api/public/clientes.php?id=${id}&action=`;

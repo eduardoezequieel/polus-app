@@ -1,10 +1,15 @@
 //Constante para la ruta de la API
-const API_CATEGORIA = '../../app/api/public/categoria.php?action=';
+const API_CATEGORIA = 'http://34.125.116.235/app/api/public/categoria.php?action=';
 
 //Cuando se carga la pagina web
 document.addEventListener('DOMContentLoaded', function(){
     readCategories(API_CATEGORIA);
-    isLogged();
+    let params = new URLSearchParams(location.search)
+    // Se obtienen los datos localizados por medio de las variables.
+    const id = params.get('id');
+    const alias = params.get('alias');
+    const foto = params.get('foto');
+    isLogged(id,alias,foto);
 });
 //Funcion para el llenado de tablas.
 function fillCategories(dataset){

@@ -1,8 +1,23 @@
-//Constante para establecer la ruta de la API
-const API_CLIENTES = '../../app/api/public/clientes.php?action=';
+let api_clientes;
+let id;
+let alias;
+let foto;
 
 // Al cargar la pagina
 document.addEventListener('DOMContentLoaded', function(){
+    let params = new URLSearchParams(location.search)
+    // Se obtienen los datos localizados por medio de las variables.
+    id = params.get('id');
+    alias = params.get('alias');
+    foto = params.get('foto');
+    isLogged(id,alias,foto);
+    if (id > 0){
+        // Constante para establecer la ruta y parámetros de comunicación con la API.
+        api_clientes = `http://34.125.116.235/app/api/public/clientes.php?id=${id}&action=`;
+    } else {
+        // Constante para establecer la ruta y parámetros de comunicación con la API.
+        api_clientes = `http://34.125.116.235/app/api/public/clientes.php?action=`;
+    }
     // Carga la informacion del cliente
     obtenerInfo();
     // Se registra la sesion
@@ -13,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 //Funcion que registra la sesión
 function createSesionHistory(){
-    fetch(API_CLIENTES + 'createSesionHistory', {
+    fetch(api_clientes + 'createSesionHistory', {
         method: 'get'
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
@@ -36,7 +51,7 @@ function createSesionHistory(){
 
 //Carga el historial de sesiones
 function getSesionHistory() {
-    fetch(API_CLIENTES + 'getSesionHistory', {
+    fetch(api_clientes + 'getSesionHistory', {
         method: 'get'
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
@@ -98,7 +113,7 @@ function deleteSessionHistory(id) {
     }).then(function (value) {
         // Se verifica si fue cliqueado el botón Sí para hacer la petición de borrado, de lo contrario no se hace nada.
         if (value) {
-            fetch(API_CLIENTES + 'deleteSesionHistory', {
+            fetch(api_clientes + 'deleteSesionHistory', {
                 method: 'post',
                 body: data
             }).then(function (request) {
@@ -108,7 +123,7 @@ function deleteSessionHistory(id) {
                         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                         if (response.status) {
                             // Se cargan nuevamente las filas en la tabla de la vista después de borrar un registro.
-                            sweetAlert(1, response.message, 'mi_cuenta.html');
+                            sweetAlert(1, response.message, `mi_cuenta.html?id=${id}&alias=${alias}&foto=${foto}`);
                         } else {
                             sweetAlert(2, response.exception, null);
                             console.log(response.status + ' ' + response.statusText);
@@ -138,7 +153,7 @@ document.getElementById('updateAuth-form').addEventListener('submit',function(ev
     //Evitamos recargar la pagina
     event.preventDefault();
     //fetch
-    fetch(API_CLIENTES + 'updateAuth', {
+    fetch(api_clientes + 'updateAuth', {
         method: 'post',
         body: new FormData(document.getElementById('updateAuth-form'))
     }).then(function(request){
@@ -150,9 +165,9 @@ document.getElementById('updateAuth-form').addEventListener('submit',function(ev
                     //Mandando mensaje de exito
                     closeModal('cambiarAuth');
                     if (document.getElementById('switchValue').value == 'si') {
-                        sweetAlert(1, 'Usted ha habilitado la autenticación en dos pasos, podra ver los cambios la proxima vez que inicie sesión.', 'mi_cuenta.html');
+                        sweetAlert(1, 'Usted ha habilitado la autenticación en dos pasos, podra ver los cambios la proxima vez que inicie sesión.', `mi_cuenta.html?id=${id}&alias=${alias}&foto=${foto}`);
                     } else if(document.getElementById('switchValue').value == 'no') {
-                        sweetAlert(1, 'Usted ha deshabilitado la autenticación en dos pasos, podra ver los cambios la proxima vez que inicie sesión.', 'mi_cuenta.html');
+                        sweetAlert(1, 'Usted ha deshabilitado la autenticación en dos pasos, podra ver los cambios la proxima vez que inicie sesión.', `mi_cuenta.html?id=${id}&alias=${alias}&foto=${foto}`);
                     }
                 } else{
                     sweetAlert(4, response.exception, null);
@@ -168,7 +183,7 @@ document.getElementById('updateAuth-form').addEventListener('submit',function(ev
 
 //Obtener info
 function obtenerInfo(){
-    fetch(API_CLIENTES + 'readProfile', {
+    fetch(api_clientes + 'readProfile', {
         method: 'get'
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
@@ -209,7 +224,7 @@ document.getElementById('micuenta-form').addEventListener('submit',function(even
     //Evitamos recargar la pagina
     event.preventDefault();
     //fetch
-    fetch(API_CLIENTES + 'editProfile', {
+    fetch(api_clientes + 'editProfile', {
         method: 'post',
         body: new FormData(document.getElementById('micuenta-form'))
     }).then(function (request) {
@@ -219,7 +234,7 @@ document.getElementById('micuenta-form').addEventListener('submit',function(even
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se cargan nuevamente las filas en la tabla de la vista después de agregar o modificar un registro.
-                    sweetAlert(1, response.message, 'mi_cuenta.html');
+                    sweetAlert(1, response.message, `mi_cuenta.html?id=${id}&alias=${alias}&foto=${foto}`);
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -237,7 +252,7 @@ document.getElementById('updateUser-form').addEventListener('submit',function(ev
     //Evitamos recargar la pagina
     event.preventDefault();
     //fetch
-    fetch(API_CLIENTES + 'updateUser', {
+    fetch(api_clientes + 'updateUser', {
         method: 'post',
         body: new FormData(document.getElementById('updateUser-form'))
     }).then(function (request) {
@@ -247,7 +262,8 @@ document.getElementById('updateUser-form').addEventListener('submit',function(ev
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se cargan nuevamente las filas en la tabla de la vista después de agregar o modificar un registro.
-                    sweetAlert(1, response.message, 'mi_cuenta.html');
+                    sweetAlert(1, response.message, `mi_cuenta.html?id=${id}&alias=${response.usuario}&foto=${foto}`);
+                    isLogged(id,response.usuario, foto);
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -265,7 +281,7 @@ document.getElementById('updateEmail-form').addEventListener('submit',function(e
     //Evitamos recargar la pagina
     event.preventDefault();
     //fetch
-    fetch(API_CLIENTES + 'updateEmail', {
+    fetch(api_clientes + 'updateEmail', {
         method: 'post',
         body: new FormData(document.getElementById('updateEmail-form'))
     }).then(function (request) {
@@ -275,7 +291,7 @@ document.getElementById('updateEmail-form').addEventListener('submit',function(e
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se cargan nuevamente las filas en la tabla de la vista después de agregar o modificar un registro.
-                    sweetAlert(1, response.message, 'mi_cuenta.html');
+                    sweetAlert(1, response.message, `mi_cuenta.html?id=${id}&alias=${alias}&foto=${foto}`);
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -293,7 +309,7 @@ document.getElementById('updatePassword-form').addEventListener('submit',functio
     //Evitamos recargar la pagina
     event.preventDefault();
     //fetch
-    fetch(API_CLIENTES + 'updatePassword', {
+    fetch(api_clientes + 'updatePassword', {
         method: 'post',
         body: new FormData(document.getElementById('updatePassword-form'))
     }).then(function (request) {
@@ -303,7 +319,7 @@ document.getElementById('updatePassword-form').addEventListener('submit',functio
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se cargan nuevamente las filas en la tabla de la vista después de agregar o modificar un registro.
-                    sweetAlert(1, response.message, 'mi_cuenta.html');
+                    sweetAlert(1, response.message, `mi_cuenta.html?id=${id}&alias=${alias}&foto=${foto}`);
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
