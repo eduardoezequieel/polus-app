@@ -1,12 +1,11 @@
 //Constante para la ruta de la API
 const API_CATEGORIA2 = 'http://34.125.116.235/app/api/public/categoria.php?action=';
-const API_PEDIDO = 'http://34.125.116.235/app/api/public/pedidos.php?action=';
 const ENDPOINT_TALLAS = 'http://34.125.116.235/app/api/public/pedidos.php?action=readTallaProductoCart';
 var stock2;
 var id;
 var alias;
 var foto
-
+var api_pedidos;
 //Cuando se carga la pagina web
 document.addEventListener('DOMContentLoaded', function(){
     let params = new URLSearchParams(location.search);
@@ -15,13 +14,21 @@ document.addEventListener('DOMContentLoaded', function(){
     alias = params.get('alias');
     foto = params.get('foto');
     isLogged(id,alias,foto);
+    if (id > 0){
+        // Constante para establecer la ruta y parámetros de comunicación con la API.
+        api_pedidos = `http://34.125.116.235/app/api/public/pedidos.php?id=${id}&action=`;
+        
+    } else {
+        // Constante para establecer la ruta y parámetros de comunicación con la API.
+        api_pedidos = `http://34.125.116.235/app/api/public/clientes.php?action=`;
+    }
 });
 
  
 
 // Función para obtener el registro de pedidos del cliente..
 function readClientRecord() {
-    fetch(API_PEDIDO + 'readClientRecord', {
+    fetch(api_pedidos + 'readClientRecord', {
         method: 'get'
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
@@ -79,7 +86,7 @@ function getProducts(id){
     const data = new FormData();
     data.append('idPedido', id);
 
-    fetch(API_PEDIDO + 'getProducts', {
+    fetch(api_pedidos + 'getProducts', {
         method: 'post',
         body: data
     }).then(function (request) {
@@ -146,7 +153,7 @@ function logOutCliente(id) {
 // Función para obtener el detalle del pedido (carrito de compras).
 function readOrderDetail() {
     document.getElementById('finish').disabled = true;
-    fetch(API_PEDIDO + 'readOrderDetail', {
+    fetch(api_pedidos + 'readOrderDetail', {
         method: 'get'
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
@@ -224,7 +231,7 @@ function openDeleteDialogCart(id) {
             const data = new FormData();
             data.append('id_detalle', id);
 
-            fetch(API_PEDIDO + 'deleteDetail', {
+            fetch(api_pedidos + 'deleteDetail', {
                 method: 'post',
                 body: data
             }).then(function (request) {
@@ -258,7 +265,7 @@ function openUpdateDialog(detallepedido, cantidad, idproducto){
     document.getElementById('idProducto3').value = idproducto;
 
     //Fetch para verificar si el producto seleccionado es de tipo ropa
-    fetch(API_PEDIDO + 'checkClothesCart', {
+    fetch(api_pedidos + 'checkClothesCart', {
         method: 'post',
         body: new FormData(document.getElementById('cantidadUpdate-form'))
     }).then(request => {
@@ -287,7 +294,7 @@ function readClothesDetailCart() {
     document.getElementById('cbTallas').className = 'form-select personalizacionPolus3';
     document.getElementById('labelTalla2').className = 'text-white text-center my-2';
     //Fetch para leer los datos del producto
-    fetch(API_PEDIDO + 'readClothesDetailCart', {
+    fetch(api_pedidos + 'readClothesDetailCart', {
         method: 'post',
         body: new FormData(document.getElementById('cantidadUpdate-form'))
     }).then(request => {
@@ -322,7 +329,7 @@ function readNoClothesDetailCart() {
     document.getElementById('updateCart').disabled = true;
     document.getElementById('cantidad2').textContent = document.getElementById('cantidadCart').value;
     //Fetch para leer los datos del producto
-    fetch(API_PEDIDO + 'readNoClothesDetailCart', {
+    fetch(api_pedidos + 'readNoClothesDetailCart', {
         method: 'post',
         body: new FormData(document.getElementById('cantidadUpdate-form'))
     }).then(request => {
@@ -431,7 +438,7 @@ function showClothesStockCart() {
     document.getElementById('btnplus').disabled = false;
     document.getElementById('btnminus').disabled = false;
     //Fecth para capturar el stock para productos de tipo ropa
-    fetch(API_PEDIDO + 'showClothesStockCart', {
+    fetch(api_pedidos + 'showClothesStockCart', {
         method: 'post',
         body: new FormData(document.getElementById('cantidadUpdate-form'))
     }).then(request => {
@@ -463,7 +470,7 @@ document.getElementById('updateCart').addEventListener('click', function (event)
     //Evento para evitar que recargue la pagina
     event.preventDefault();
     //Fetch para buscar si el cliente tiene algún pedido pendiente, caso contrario agregara uno nuevo
-    fetch(API_PEDIDO + 'checkStockCart', {
+    fetch(api_pedidos + 'checkStockCart', {
         method: 'post',
         body: new FormData(document.getElementById('cantidadUpdate-form'))
     }).then(request => {
@@ -539,7 +546,7 @@ function finishOrderCart() {
     }).then(function (value) {
         // Se verifica si fue cliqueado el botón Sí para realizar la petición respectiva, de lo contrario se muestra un mensaje.
         if (value) {
-            fetch(API_PEDIDO + 'finishOrder', {
+            fetch(api_pedidos + 'finishOrder', {
                 method: 'get'
             }).then(function (request) {
                 // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.

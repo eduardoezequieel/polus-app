@@ -179,7 +179,7 @@ function isLogged(id,alias,foto){
 
                                 </ul>
                                 <form id="controlesNavbar">
-                                    <button id="btnCarrito" data-bs-toggle="modal" data-bs-target="#carritoModal" class="btn text-white" onclick="readOrderDetail()"><i class="fas fa-shopping-cart mx-2"></i></button>
+                                    <button type="button" id="btnCarrito" data-bs-toggle="modal" data-bs-target="#carritoModal" class="btn text-white" onclick="readOrderDetail()"><i class="fas fa-shopping-cart mx-2"></i></button>
                                     
                                 </form>
                                 <div class="dropdown">
@@ -201,8 +201,8 @@ function isLogged(id,alias,foto){
                     document.getElementById('nav').innerHTML = content;
                 } else if (response.error) {
                     console.log('fuera');
-                let content = '';
-                content += `
+                    let content = '';
+                    content += `
                         <a class="navbar-brand" href="../index.html">
                                 <img src="http://34.125.116.235/resources/img/p icono.png" alt="img-fluid" height="40px" width="40px">
                             </a>
@@ -254,6 +254,9 @@ function isLogged(id,alias,foto){
     });
 }
 
+document.getElementById('controlesNavbar').addEventListener('click', function (event) {
+    event.preventDefault();
+});
 
 function readCategoriesDropdown() {
     fetch('http://34.125.116.235/app/api/public/categoria.php?action=' + 'readAll', {
