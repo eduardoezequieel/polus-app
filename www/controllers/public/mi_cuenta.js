@@ -7,7 +7,12 @@ var stock2;
 
 //Cuando se carga la pagina web
 document.addEventListener('DOMContentLoaded', function(){
-    isLogged();
+    let params = new URLSearchParams(location.search);
+    // Se obtienen los datos localizados por medio de las variables.
+    const id = params.get('id');
+    const alias = params.get('alias');
+    const foto = params.get('foto');
+    isLogged(id,alias,foto);
 });
 
  
@@ -114,7 +119,7 @@ function fillCategories(dataset){
 
 
 // Función para mostrar un mensaje de confirmación al momento de cerrar sesión.
-function logOutCliente() {
+function logOutCliente(id) {
     swal({
         title: 'Advertencia',
         text: '¿Quiere cerrar la sesión?',
@@ -125,7 +130,7 @@ function logOutCliente() {
     }).then(function (value) {
         // Se verifica si fue cliqueado el botón Sí para hacer la petición de cerrar sesión, de lo contrario se muestra un mensaje.
         if (value) {
-            fetch('../../app/api/public/clientes.php?action=logOut', {
+            fetch(`http://34.125.116.235/app/api/public/clientes.php?action=logOut&id=${id}`, {
                 method: 'get'
             }).then(function (request) {
                 // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.

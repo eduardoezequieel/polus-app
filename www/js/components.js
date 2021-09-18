@@ -133,9 +133,15 @@ function readRows(api) {
 }
 
 //Función para verificar si hay alguna sesión iniciada o no
-function isLogged(){
+function isLogged(id,alias,foto){
+    var api_nav;
+    if(id > 0) {
+        api_nav = `http://34.125.116.235/app/api/public/clientes.php?id=${id}&action=isLogged`;
+    } else {
+        api_nav = `http://34.125.116.235/app/api/public/clientes.php?action=isLogged`;
+    }
     //Función para verificar si hay una sesión iniciada
-    fetch('http://34.125.116.235/app/api/public/clientes.php?action=' + 'isLogged').then(function (request) {
+    fetch(api_nav).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
         if (request.ok) {
             request.json().then(function (response) {
@@ -178,14 +184,14 @@ function isLogged(){
                                 </form>
                                 <div class="dropdown">
                                     <button class="btn d-flex" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="http://34.125.116.235/resources/img/dashboard_img/cliente_fotos/${response.fotoCliente}" id="fotoPerfil" alt="" class="rounded-circle fotografiaPerfil2" width="40px">
-                                            <h5 class="text-center mx-3 paddingUsername">${response.usuarioCliente}</h5>
+                                            <img src="http://34.125.116.235/resources/img/dashboard_img/cliente_fotos/${foto}" id="fotoPerfil" alt="" class="rounded-circle fotografiaPerfil2" width="40px">
+                                            <h5 class="text-center mx-3 paddingUsername">${alias}</h5>
                                             <i class="fas fa-caret-down paddingFlecha"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-dark  animate__animated animate__bounceIn" aria-labelledby="dropdownMenuButton1">
                                         <li><a id="btnMisPedidos" onclick="readClientRecord()" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#pedidosClienteModal" href="#">Mis Pedidos</a></li>
                                         <li><a id="btnMiCuenta" class="dropdown-item" href="mi_cuenta.html">Mi Cuenta</a></li>
-                                        <li><a class="dropdown-item" href="#" onclick="logOutCliente()">Cerrar Sesión</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="logOutCliente(${id})">Cerrar Sesión</a></li>
                                     </ul>
                                 </div>  
                             </div>
@@ -227,8 +233,8 @@ function isLogged(){
                                 </ul>
                                 <form id="controlesNavbar">
                                     
-                                    <a href="html/iniciar_sesion.html" class="btn btn-outline-light">Acceder</a>
-                                    <a href="html/crear_cuenta.html" class="btn btn-outline-secondary">Registrarse</a>
+                                    <a href="html/iniciar_sesion.html?id=${id}&alias=${alias}&foto=${foto}" class="btn btn-outline-light">Acceder</a>
+                                    <a href="html/crear_cuenta.html?id=${id}" class="btn btn-outline-secondary">Registrarse</a>
                                     
                                 </form>
                             </div>

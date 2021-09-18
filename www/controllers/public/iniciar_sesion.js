@@ -1,10 +1,22 @@
-// Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_CLIENTES = 'http://34.125.116.235/app/api/public/clientes.php?action=';
-
+let api_clientes;
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
+    params = new URLSearchParams(location.search)
+    // Se obtienen los datos localizados por medio de las variables.
+    const id = params.get('id');
+    console.log(id);
+    if (id > 0){
+        // Constante para establecer la ruta y parámetros de comunicación con la API.
+        api_clientes = `http://34.125.116.235/app/api/public/clientes.php?id=${id}&action=`;
+        console.log('aqui');
+    } else {
+        // Constante para establecer la ruta y parámetros de comunicación con la API.
+        api_clientes = `http://34.125.116.235/app/api/public/clientes.php?action=`;
+        console.log('aqui no');
+    }
     //Llamando función para activar registros bloqueados
-    checkBlockUsers();
+    //checkBlockUsers();
+    
 });
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de cambiar cantidad de producto.
@@ -13,7 +25,7 @@ document.getElementById('login-form').addEventListener('submit', function (event
     event.preventDefault();
 
     //Obtener datos de la api en el caso logIn
-    fetch(API_CLIENTES + 'logIn', {
+    fetch(api_clientes + 'logIn', {
         method: 'post',
         body: new FormData(document.getElementById('login-form'))
     }).then(function (request) {
@@ -26,7 +38,7 @@ document.getElementById('login-form').addEventListener('submit', function (event
                         sendVerificationCode();
                         openModal('validarCodigo');
                     } else if (response.auth == 'no') {
-                        sweetAlert(1, response.message, '../index.html');
+                        sweetAlert(1, response.message, `../index.html?id=${response.idCliente}&alias=${response.usuarioCliente}&foto=${response.fotoCliente}`);
                     }
                 } else if (response.error) {
                     sweetAlert(3,response.message, 'html/cambiar_clave.html');
@@ -45,7 +57,7 @@ document.getElementById('login-form').addEventListener('submit', function (event
 
 //Enviar correo
 function sendVerificationCode(){
-    fetch(API_CLIENTES + 'sendVerificationCode', {
+    fetch(api_clientes + 'sendVerificationCode', {
         method: 'get'
     }).then(function(request){
         //Verificando si la petición fue correcta
@@ -69,7 +81,7 @@ document.getElementById('validarCodigo-form').addEventListener('submit', functio
     //Desactivar el recargar página
     event.preventDefault();
     //Capturando datos 
-    fetch(API_CLIENTES + 'validateCode', {
+    fetch(api_clientes + 'validateCode', {
         method: 'post',
         body: new FormData(document.getElementById('validarCodigo-form'))
     }).then(function(request){
@@ -94,7 +106,7 @@ document.getElementById('validarCodigo-form').addEventListener('submit', functio
 //Función para verificar si hay usuarios bloqueados que ya han cumplido con las 24 horas
 function checkBlockUsers() {
     // Petición para verificar si usuarios ya cumplidos con su penalización
-    fetch(API_CLIENTES + 'checkBlockUsers')
+    fetch(api_clientes + 'checkBlockUsers')
     .then(function (request) {
         // Se verifica si la petición es correcta.
         if (request.ok) {
@@ -104,7 +116,7 @@ function checkBlockUsers() {
                     // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
                     response.dataset.map(function (row) {
                         document.getElementById('idCliente').value = row.idcliente;
-                        fetch(API_CLIENTES + 'activar', {
+                        fetch(api_clientes + 'activar', {
                             method: 'post',
                             body: new FormData(document.getElementById('login-form'))
                         }).then(function (request){
