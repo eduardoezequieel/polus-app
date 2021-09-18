@@ -1,5 +1,5 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_CLIENTES = '../../app/api/public/clientes.php?action=';
+const API_CLIENTES = 'http://34.125.116.235/app/api/public/clientes.php?action=';
 
 document.getElementById('codigo-form').addEventListener('submit', function(event){
     event.preventDefault();

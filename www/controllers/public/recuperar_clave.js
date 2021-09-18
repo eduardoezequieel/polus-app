@@ -1,5 +1,5 @@
 //Constante para la ruta API
-const API_USUARIO = '../../app/api/public/clientes.php?action=';
+const API_USUARIO = 'http://34.125.116.235/app/api/public/clientes.php?action=';
 
 //Método para cambiar la contraseña
 document.getElementById('primeruso-form').addEventListener('submit', function (event) {

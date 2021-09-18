@@ -3,15 +3,17 @@ const API_CATEGORIA2 = 'http://34.125.116.235/app/api/public/categoria.php?actio
 const API_PEDIDO = 'http://34.125.116.235/app/api/public/pedidos.php?action=';
 const ENDPOINT_TALLAS = 'http://34.125.116.235/app/api/public/pedidos.php?action=readTallaProductoCart';
 var stock2;
-
+var id;
+var alias;
+var foto
 
 //Cuando se carga la pagina web
 document.addEventListener('DOMContentLoaded', function(){
     let params = new URLSearchParams(location.search);
     // Se obtienen los datos localizados por medio de las variables.
-    const id = params.get('id');
-    const alias = params.get('alias');
-    const foto = params.get('foto');
+    id = params.get('id');
+    alias = params.get('alias');
+    foto = params.get('foto');
     isLogged(id,alias,foto);
 });
 
@@ -560,4 +562,13 @@ function finishOrderCart() {
             sweetAlert(4, 'Puede seguir comprando', null);
         }
     });
+}
+
+/*document.getElementById('carrito').addEventListener('click',function(){
+    console.log('hola');
+    window.location.href = `html/pagina_principal.html?id=${id}&alias=${alias}&foto=${foto}`;
+})*/
+
+function direccion(){
+    window.location.href = `html/pagina_principal.html?id=${id}&alias=${alias}&foto=${foto}`;
 }

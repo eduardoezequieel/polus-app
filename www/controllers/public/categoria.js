@@ -1,3 +1,6 @@
+var idCliente;
+var alias;
+var foto;
 //Constante para la ruta de la API
 const API_CATEGORIA = 'http://34.125.116.235/app/api/public/categoria.php?action=';
 
@@ -6,22 +9,22 @@ document.addEventListener('DOMContentLoaded', function(){
     readCategories(API_CATEGORIA);
     let params = new URLSearchParams(location.search)
     // Se obtienen los datos localizados por medio de las variables.
-    const id = params.get('id');
-    const alias = params.get('alias');
-    const foto = params.get('foto');
-    isLogged(id,alias,foto);
+    idCliente = params.get('id');
+    alias = params.get('alias');
+    foto = params.get('foto');
+    isLogged(ididCliente,alias,foto);
 });
 //Funcion para el llenado de tablas.
 function fillCategories(dataset){
     let content = ' ';
 
     dataset.map(function(row){
-        url = `categoria.html?id=${row.idcategoria}&name=${row.categoria}`;
+        url = `categoria.html?id=${idCliente}&alias=${alias}&foto=${foto}&idSub=${row.idcategoria}&name=${row.categoria}`;
 
         content += `
         <div class="col d-flex justify-content-center">
             <a href="${url}" class="btn botonCategoria animate__animated animate__fadeInDown d-flex flex-column justify-content-center align-items-center">
-                <img src="../../resources/img/dashboard_img/admon_fotos/${row.imagen}" alt="#" class="img-fluid w-25 mb-2"> 
+                <img src="http://34.125.116.235/resources/img/dashboard_img/admon_fotos/${row.imagen}" alt="#" class="img-fluid w-25 mb-2"> 
                 ${row.categoria}
             </a>
         </div>
@@ -47,7 +50,6 @@ function readCategories(api) {
                 }
                 // Se envían los datos a la función del controlador para que llenen las categorias en la vista.
                 fillCategories(data);
-                console.log(data);
             });
         } else {
             console.log(request.status + ' ' + request.statusText);

@@ -1,13 +1,13 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_CATALOGO = '../../app/api/public/productos.php?action=';
-const ENDPOINT_CA = '../../app/api/public/productos.php?action=readpuntuacion';
+const API_CATALOGO = 'http://34.125.116.235/app/api/public/productos.php?action=';
+const ENDPOINT_CA = 'http://34.125.116.235/app/api/public/productos.php?action=readpuntuacion';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     // Se busca en la URL las variables (parámetros) disponibles.
     let params = new URLSearchParams(location.search);
     // Se obtienen los datos localizados por medio de las variables.
-    const id = params.get('id');    
+    const id = params.get('idProducto');    
     console.log(id);
     // Se llama a la función que muestra los productos de la categoría seleccionada previamente.
     readProduct(id);
@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('idProduc').value = id;
 
     showComments(id);
+    const idCliente = params.get('id');
+    const alias = params.get('alias');
+    const foto = params.get('foto');
+    isLogged(idCliente,alias,foto);
 });
 
 function showComments(id){
@@ -156,7 +160,7 @@ document.getElementById("ingresar").addEventListener("submit",function(event){
     // Se busca en la URL las variables (parámetros) disponibles.
     let params = new URLSearchParams(location.search);
     // Se obtienen los datos localizados por medio de las variables.
-    const id = params.get('id'); 
+    const id = params.get('idProducto'); 
     event.preventDefault()
     fetch(API_CATALOGO + 'createRow', {
         method: 'post',

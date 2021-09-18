@@ -1,12 +1,14 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_CATALOGO = '../../app/api/public/productos.php?action=';
-const ENDPOINT_SUBCATEGORIA = '../../app/api/public/productos.php?action=readSubcategorias';
-const API_PEDIDOS = '../../app/api/public/pedidos.php?action=';
-const ENDPOINT_TALLA = '../../app/api/public/pedidos.php?action=readTallaProducto';
+const API_CATALOGO = 'http://34.125.116.235/app/api/public/productos.php?action=';
+const ENDPOINT_SUBCATEGORIA = 'http://34.125.116.235/app/api/public/productos.php?action=readSubcategorias';
+const API_PEDIDOS = 'http://34.125.116.235/app/api/public/pedidos.php?action=';
+const ENDPOINT_TALLA = 'http://34.125.116.235/app/api/public/pedidos.php?action=readTallaProducto';
 
 //Variable para controlar el stock
 var stock;
-
+var idCliente;
+var alias;
+var foto;
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     fillSelectProducts(ENDPOINT_SUBCATEGORIA, 'cbSubcategorias', null);
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Se busca en la URL las variables (parámetros) disponibles.
     let params = new URLSearchParams(location.search);
     // Se obtienen los datos localizados por medio de las variables.
-    const id = params.get('id');
+    const id = params.get('idSub');
     const name = params.get('name');
 
     if (id == 2 || id==3) {
@@ -23,10 +25,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }else{
         
     }
-
-   
-    // Se llama a la función que muestra los productos de la categoría seleccionada previamente.
+   // Se llama a la función que muestra los productos de la categoría seleccionada previamente.
     readProducts(id, name);
+
+    // Se obtienen los datos localizados por medio de las variables.
+    idCliente = params.get('id');
+    alias = params.get('alias');
+    foto = params.get('foto');
+    isLogged(idCliente,alias,foto);
 
 });
 
@@ -74,7 +80,7 @@ function readProducts(id, name) {
 function searchProducts(api, form, action) {
     let params = new URLSearchParams(location.search);
     // Se obtienen los datos localizados por medio de las variables.
-    const id = params.get('id');
+    const id = params.get('idSub');
     const name = params.get('name');
     const data = new FormData(document.getElementById(form));
     data.append('idCategoria', id);
@@ -106,7 +112,7 @@ function searchProducts(api, form, action) {
 function fillSelectProducts(endpoint, select, selected) {
     let params = new URLSearchParams(location.search);
     // Se obtienen los datos localizados por medio de las variables.
-    const id = params.get('id');
+    const id = params.get('idSub');
     const data = new FormData();
     data.append('idCategoria', id);
     fetch(endpoint, {
@@ -155,7 +161,7 @@ function fillProducts(dataset, name){
     dataset.map(function (row) {
         
         // Se crean y concatenan las tarjetas con los datos de cada producto.
-        url = `producto.html?id=${row.idproducto}`;
+        url = `producto.html?id=${idCliente}&alias=${alias}&foto=${foto}&idProducto=${row.idproducto}`;
 
         content += `
         <div class="dropdown dropend col-xl-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center animate__animated animate__bounceIn">
@@ -272,7 +278,7 @@ function readClothesDetail() {
                 if (response.status) {
                     let foto = '';
                     foto = `
-                        <img src="../../resources/img/dashboard_img/producto_fotos/${response.dataset.imagenprincipal}" class="imagenProducto5 mt-4">
+                        <img src="http://34.125.116.235/resources/img/dashboard_img/producto_fotos/${response.dataset.imagenprincipal}" class="imagenProducto5 mt-4">
                         `;
                     document.getElementById('columnaFoto').innerHTML = foto;
                     document.getElementById('nombre').textContent = response.dataset.nombre.toUpperCase();
@@ -308,7 +314,7 @@ function readNoClothesDetail() {
                 if (response.status) {
                     let foto = '';
                     foto = `
-                        <img src="../../resources/img/dashboard_img/producto_fotos/${response.dataset.imagenprincipal}" class="imagenProducto5 mt-4">
+                        <img src="http://34.125.116.235/resources/img/dashboard_img/producto_fotos/${response.dataset.imagenprincipal}" class="imagenProducto5 mt-4">
                         `;
                     document.getElementById('columnaFoto').innerHTML = foto;
                     document.getElementById('nombre').textContent = response.dataset.nombre.toUpperCase();

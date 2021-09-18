@@ -1,20 +1,25 @@
 let api_clientes;
+var id;
+var alias;
+var foto;
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     let params = new URLSearchParams(location.search)
     // Se obtienen los datos localizados por medio de las variables.
-    const id = params.get('id');
+    id = params.get('id');
+    alias = params.get('alias');
+    foto = params.get('foto');
     if (id > 0){
         // Constante para establecer la ruta y parámetros de comunicación con la API.
         api_clientes = `http://34.125.116.235/app/api/public/clientes.php?id=${id}&action=`;
-        console.log('aqui');
+        
     } else {
         // Constante para establecer la ruta y parámetros de comunicación con la API.
         api_clientes = `http://34.125.116.235/app/api/public/clientes.php?action=`;
-        console.log('aqui no');
+        
     }
     //Llamando función para activar registros bloqueados
-    //checkBlockUsers();
+    checkBlockUsers();
     
 });
 
@@ -90,7 +95,7 @@ document.getElementById('validarCodigo-form').addEventListener('submit', functio
                 //Verificando respuesta satisfactoria
                 if(response.status){
                     closeModal('validarCodigo');
-                    sweetAlert(1, response.message, 'index.html');
+                    sweetAlert(1, response.message, `../index.html?id=${id}&alias=${alias}&foto=${foto}`);
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
