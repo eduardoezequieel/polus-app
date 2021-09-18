@@ -1,14 +1,15 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_CATALOGO = 'http://34.125.116.235/app/api/public/productos.php?action=';
 const ENDPOINT_SUBCATEGORIA = 'http://34.125.116.235/app/api/public/productos.php?action=readSubcategorias';
-const API_PEDIDOS = 'http://34.125.116.235/app/api/public/pedidos.php?action=';
-const ENDPOINT_TALLA = 'http://34.125.116.235/app/api/public/pedidos.php?action=readTallaProducto';
 
 //Variable para controlar el stock
 var stock;
 var idCliente;
 var alias;
 var foto;
+var idPedido;
+var api_pedidos;
+var endpoint_talla;
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     fillSelectProducts(ENDPOINT_SUBCATEGORIA, 'cbSubcategorias', null);
@@ -34,6 +35,16 @@ document.addEventListener('DOMContentLoaded', function () {
     foto = params.get('foto');
     isLogged(idCliente,alias,foto);
 
+    if (idCliente > 0){
+        // Constante para establecer la ruta y parámetros de comunicación con la API.
+        api_pedidos = `http://34.125.116.235/app/api/public/pedidos.php?id=${idCliente}&action=`;
+        endpoint_talla = `http://34.125.116.235/app/api/public/pedidos.php?id=${idCliente}&action=readTallaProducto`;
+        
+    } else {
+        // Constante para establecer la ruta y parámetros de comunicación con la API.
+        api_pedidos = `http://34.125.116.235/app/api/public/clientes.php?action=`;
+        endpoint_talla = `http://34.125.116.235/app/api/public/pedidos.php?action=`;
+    }
 });
 
 document.getElementById('search-subcategoria').addEventListener('submit', function(event){
@@ -241,7 +252,7 @@ function openCantidadDialog(id){
     document.getElementById('idProducto2').value = id;
 
     //Fetch para verificar si el producto seleccionado es de tipo ropa
-    fetch(API_PEDIDOS + 'checkClothes', {
+    fetch(api_pedidos + 'checkClothes', {
         method: 'post',
         body: new FormData(document.getElementById('cantidad-form'))
     }).then(request => {
@@ -251,7 +262,7 @@ function openCantidadDialog(id){
                 //Se verifica la respuesta de la api
                 if(response.status) {
                     readClothesDetail();
-                    fillSelectTallas(ENDPOINT_TALLA, 'cbTalla', null);
+                    fillSelectTallas(endpoint_talla, 'cbTalla', null);
                 } else if (response.error){
                     sweetAlert(2, response.exception,null);
                 } else {
@@ -267,7 +278,7 @@ function openCantidadDialog(id){
 //Función para leer los datos del producto si es de tipo ropa
 function readClothesDetail() {
     //Fetch para leer los datos del producto
-    fetch(API_PEDIDOS + 'readClothesDetail', {
+    fetch(api_pedidos + 'readClothesDetail', {
         method: 'post',
         body: new FormData(document.getElementById('cantidad-form'))
     }).then(request => {
@@ -299,11 +310,11 @@ function readClothesDetail() {
 
 //Función para leer los datos del producto si no es de tipo ropa
 function readNoClothesDetail() {
-    fillSelectTallas(ENDPOINT_TALLA, 'cbTalla', null);
-    document.getElementById('cbTalla').className = 'd-none';
+    fillSelectTallas(endpoint_talla, 'cbTalla', null);
+    //document.getElementById('cbTalla').className = 'd-none';
     document.getElementById('labelTalla').className = 'd-none';
     //Fetch para leer los datos del producto
-    fetch(API_PEDIDOS + 'readNoClothesDetail', {
+    fetch(api_pedidos + 'readNoClothesDetail', {
         method: 'post',
         body: new FormData(document.getElementById('cantidad-form'))
     }).then(request => {
@@ -343,7 +354,7 @@ function readNoClothesDetail() {
 //Método para cambiar la cantidad en stock dependiendo de la talla seleccionada
 function showClothesStock() {
     //Fecth para capturar el stock para productos de tipo ropa
-    fetch(API_PEDIDOS + 'showClothesStock', {
+    fetch(api_pedidos + 'showClothesStock', {
         method: 'post',
         body: new FormData(document.getElementById('cantidad-form'))
     }).then(request => {
@@ -447,7 +458,7 @@ document.getElementById('agregarCart').addEventListener('click', function (event
     //Evento para evitar que recargue la pagina
     event.preventDefault();
     //Fetch para buscar si el cliente tiene algún pedido pendiente, caso contrario agregara uno nuevo
-    fetch(API_PEDIDOS + 'startOrder', {
+    fetch(api_pedidos + 'startOrder', {
         method: 'post',
         body: new FormData(document.getElementById('cantidad-form'))
     }).then(request => {

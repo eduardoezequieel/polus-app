@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function(){
     idCliente = params.get('id');
     alias = params.get('alias');
     foto = params.get('foto');
-    isLogged(ididCliente,alias,foto);
+    isLogged(idCliente,alias,foto);
 });
 //Funcion para el llenado de tablas.
 function fillCategories(dataset){
