@@ -178,7 +178,7 @@ function fillProducts(dataset, name){
         <div class="dropdown dropend col-xl-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center animate__animated animate__bounceIn">
             <button class="btn btnCategoria" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="divFotoproducto">
-                    <img src="../../resources/img/dashboard_img/producto_fotos/${row.imagenprincipal}" alt="#" class="encajarImagen" height="150px" width="200px">
+                    <img src="http://34.125.116.235/resources/img/dashboard_img/producto_fotos/${row.imagenprincipal}" alt="#" class="encajarImagen" height="150px" width="200px">
                 </div>
                 <div class="row justify-content-center mt-4">
                     <div class="col-7 d-flex justify-content-center">
