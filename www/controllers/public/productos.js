@@ -467,7 +467,7 @@ document.getElementById('agregarCart').addEventListener('click', function (event
             request.json().then(response => {
                 //Verificamos la respuesta de a la api
                 if (response.status) {
-                    sweetAlert(1, response.message,null);
+                    sweetAlert(1, response.message,closeModal('cantidadModal'));
                 } else {
                     sweetAlert(2, response.exception, null);
                 }

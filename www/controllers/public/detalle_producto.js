@@ -61,7 +61,7 @@ function fillComments(dataset){
             content += `
             <div class="row pl-5 fondoComentario mx-1">
                 <div class="col-2">
-                    <img src="../../resources/img/astronauta.PNG" alt="" class="img-fluid d-block m-auto">
+                    <img src="../img/astronauta.PNG" alt="" class="img-fluid d-block m-auto">
                 </div>
                 <div class="col-10">
                     <h1 class="usuarioReseña text-white">${row.cliente}</h1>
@@ -135,7 +135,7 @@ function readProduct(id) {
                     let foto = '';
                     console.log(response.dataset);
                     foto = `
-                        <img src="../../resources/img/dashboard_img/producto_fotos/${response.dataset.imagenprincipal}" class="imagenProducto mt-4">
+                        <img src="http://34.125.116.235/resources/img/dashboard_img/producto_fotos/${response.dataset.imagenprincipal}" class="imagenProducto mt-4">
                         `;
                     document.getElementById('columnaImagen').innerHTML = foto;
                     document.getElementById('tituloProducto').textContent = response.dataset.nombre;

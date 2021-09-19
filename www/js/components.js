@@ -150,7 +150,7 @@ function isLogged(id,alias,foto){
                     console.log('dentro');
                     let content = '';
                     content += `
-                    <a class="navbar-brand" href="../index.html">
+                    <a class="navbar-brand" href="../index.html?id=${id}&alias=${alias}&foto=${foto}">
                                 <img src="http://34.125.116.235/resources/img/p icono.png" alt="img-fluid" height="40px" width="40px">
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -159,7 +159,7 @@ function isLogged(id,alias,foto){
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item dropdown" id="dropdownCategorias" onclick="readCategoriesDropdown()">
+                                <li class="nav-item dropdown" id="dropdownCategorias" onclick="readCategoriesDropdown(${id},${alias},${foto})">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Categorías
@@ -203,7 +203,7 @@ function isLogged(id,alias,foto){
                     console.log('fuera');
                     let content = '';
                     content += `
-                        <a class="navbar-brand" href="../index.html">
+                        <a class="navbar-brand" href="../index.html?id=${id}&alias=${alias}&foto=${foto}">
                                 <img src="http://34.125.116.235/resources/img/p icono.png" alt="img-fluid" height="40px" width="40px">
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -212,7 +212,7 @@ function isLogged(id,alias,foto){
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item dropdown" id="dropdownCategorias" onclick="readCategoriesDropdown()">
+                                <li class="nav-item dropdown" id="dropdownCategorias" onclick="readCategoriesDropdown(${id},${alias},${foto})">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Categorías
@@ -233,8 +233,8 @@ function isLogged(id,alias,foto){
                                 </ul>
                                 <form id="controlesNavbar">
                                     
-                                    <a href="html/iniciar_sesion.html?id=${id}&alias=${alias}&foto=${foto}" class="btn btn-outline-light">Acceder</a>
-                                    <a href="html/crear_cuenta.html?id=${id}" class="btn btn-outline-secondary">Registrarse</a>
+                                    <a href="../html/iniciar_sesion.html?id=${id}&alias=${alias}&foto=${foto}" class="btn btn-outline-light">Acceder</a>
+                                    <a href="../html/crear_cuenta.html?id=${id}" class="btn btn-outline-secondary">Registrarse</a>
                                     
                                 </form>
                             </div>
@@ -258,7 +258,7 @@ document.getElementById('controlesNavbar').addEventListener('click', function (e
     event.preventDefault();
 });
 
-function readCategoriesDropdown() {
+function readCategoriesDropdown(id,alias,foto) {
     fetch('http://34.125.116.235/app/api/public/categoria.php?action=' + 'readAll', {
         method: 'get'
     }).then(function (request) {
@@ -269,7 +269,7 @@ function readCategoriesDropdown() {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     data = response.dataset;
-                    fillCategories1(data);
+                    fillCategories1(data,id,alias,foto);
                 } else {
                     sweetAlert(4, response.exception, null);
                 }
@@ -283,11 +283,11 @@ function readCategoriesDropdown() {
 }
 
 //Funcion para el llenado de tablas.
-function fillCategories1(dataset){
+function fillCategories1(dataset,idCliente,alias2,foto2){
     let content = ' ';
 
     dataset.map(function(row){
-        url = `html/categoria.html?id=${row.idcategoria}&name=${row.categoria}`;
+        url = `html/categoria.html?id=${idCliente}&alias=${alias2}&foto=${foto2}&idSub=${row.idcategoria}&name=${row.categoria}`;
 
         content += `
         <li><a class="dropdown-item" href="${url}">${row.categoria}</a></li>
