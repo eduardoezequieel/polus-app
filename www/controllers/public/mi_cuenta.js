@@ -1,11 +1,12 @@
 //Constante para la ruta de la API
 const API_CATEGORIA2 = 'http://34.125.116.235/app/api/public/categoria.php?action=';
-const ENDPOINT_TALLAS = 'http://34.125.116.235/app/api/public/pedidos.php?action=readTallaProductoCart';
 var stock2;
 var id;
 var alias;
 var foto
 var api_pedidos;
+var idPedido;
+var endpoint_talla;
 //Cuando se carga la pagina web
 document.addEventListener('DOMContentLoaded', function(){
     let params = new URLSearchParams(location.search);
@@ -17,10 +18,11 @@ document.addEventListener('DOMContentLoaded', function(){
     if (id > 0){
         // Constante para establecer la ruta y parámetros de comunicación con la API.
         api_pedidos = `http://34.125.116.235/app/api/public/pedidos.php?id=${id}&action=`;
-        
+        endpoint_talla = `http://34.125.116.235/app/api/public/pedidos.php?id=${id}&action=readTallaProductoCart`;
     } else {
         // Constante para establecer la ruta y parámetros de comunicación con la API.
         api_pedidos = `http://34.125.116.235/app/api/public/clientes.php?action=`;
+        endpoint_talla = `http://34.125.116.235/app/api/public/pedidos.php?action=readTallaProductoCart`;
     }
 });
 
@@ -161,6 +163,8 @@ function readOrderDetail() {
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
+                    idPedido = response.idPedido;
+                    console.log(idPedido);
                     document.getElementById('finish').disabled = false;
                     // Se declara e inicializa una variable para concatenar las filas de la tabla en la vista.
                     let content = '';
@@ -275,7 +279,7 @@ function openUpdateDialog(detallepedido, cantidad, idproducto){
                 //Se verifica la respuesta de la api
                 if(response.status) {
                     readClothesDetailCart();
-                    fillSelectTallasCart(ENDPOINT_TALLAS, 'cbTallas', null);
+                    fillSelectTallasCart(endpoint_talla, 'cbTallas', null);
                 } else if (response.error){
                     sweetAlert(2, response.exception,null);
                 } else {
@@ -321,7 +325,7 @@ function readClothesDetailCart() {
 
 //Función para leer los datos del producto si no es de tipo ropa
 function readNoClothesDetailCart() {
-    fillSelectTallasCart(ENDPOINT_TALLAS, 'cbTallas', null);
+    fillSelectTallasCart(endpoint_talla, 'cbTallas', null);
     document.getElementById('cbTallas').className = 'd-none';
     document.getElementById('labelTalla2').className = 'd-none';
     document.getElementById('btnplus').disabled = false;
