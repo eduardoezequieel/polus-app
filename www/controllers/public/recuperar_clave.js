@@ -1,13 +1,14 @@
-//Constante para la ruta API
-const API_USUARIO = 'http://34.125.116.235/app/api/public/clientes.php?action=';
+
 
 //Método para cambiar la contraseña
 document.getElementById('primeruso-form').addEventListener('submit', function (event) {
     //Evento para que no recargue la pagina
     event.preventDefault();
-
+    let params = new URLSearchParams(location.search)
+    // Se obtienen los datos localizados por medio de las variables.
+    const correo = params.get('correo');
     //Verificando las credenciales del usuario
-    fetch(API_USUARIO + 'updatePasswordOut', {
+    fetch(`http://34.125.116.235/app/api/public/clientes.php?action=updatePasswordOut&correo=${correo}`, {
         method: 'post',
         body: new FormData(document.getElementById('primeruso-form'))
     }).then(request => {
