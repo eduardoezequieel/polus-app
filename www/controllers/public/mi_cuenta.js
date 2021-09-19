@@ -5,7 +5,7 @@ var id;
 var alias;
 var foto
 var api_pedidos;
-var idPedido;
+var idpedido;
 var endpoint_talla;
 //Cuando se carga la pagina web
 document.addEventListener('DOMContentLoaded', function(){
@@ -135,7 +135,7 @@ function logOutCliente(id) {
                     request.json().then(function (response) {
                         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                         if (response.status) {
-                            sweetAlert(1, response.message, 'index.html');
+                            sweetAlert(1, response.message, '../index.html');
                         } else {
                             sweetAlert(2, response.exception, null);
                         }
@@ -163,8 +163,8 @@ function readOrderDetail() {
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
-                    idPedido = response.idPedido;
-                    console.log(idPedido);
+                    idpedido = response.idPedido;
+                    console.log(idpedido);
                     document.getElementById('finish').disabled = false;
                     // Se declara e inicializa una variable para concatenar las filas de la tabla en la vista.
                     let content = '';
@@ -220,7 +220,7 @@ function readOrderDetail() {
 }
 
 // Función para mostrar un mensaje de confirmación al momento de eliminar un producto del carrito.
-function openDeleteDialogCart(id) {
+function openDeleteDialogCart(idDetail) {
     swal({
         title: 'Advertencia',
         text: '¿Está seguro de remover el producto?',
@@ -233,9 +233,9 @@ function openDeleteDialogCart(id) {
         if (value) {
             // Se define un objeto con los datos del registro seleccionado.
             const data = new FormData();
-            data.append('id_detalle', id);
+            data.append('id_detalle', idDetail);
 
-            fetch(api_pedidos + 'deleteDetail', {
+            fetch(`http://34.125.116.235/app/api/public/pedidos.php?id=${id}&action=deleteDetail&pedido=${idpedido}`, {
                 method: 'post',
                 body: data
             }).then(function (request) {
@@ -550,7 +550,7 @@ function finishOrderCart() {
     }).then(function (value) {
         // Se verifica si fue cliqueado el botón Sí para realizar la petición respectiva, de lo contrario se muestra un mensaje.
         if (value) {
-            fetch(api_pedidos + 'finishOrder', {
+            fetch(`http://34.125.116.235/app/api/public/pedidos.php?id=${id}&action=finishOrder&pedido=${idpedido}`, {
                 method: 'get'
             }).then(function (request) {
                 // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
@@ -558,7 +558,7 @@ function finishOrderCart() {
                     request.json().then(function (response) {
                         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                         if (response.status) {
-                            sweetAlert(1, response.message, 'index.html');
+                            sweetAlert(1, response.message, `../index.html?id=${id}&alias=${alias}&foto=${foto}`);
                         } else {
                             sweetAlert(2, response.exception, null);
                         }
