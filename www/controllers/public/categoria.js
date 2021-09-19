@@ -1,6 +1,6 @@
 var idCliente;
-var alias;
-var foto;
+var alia2;
+var foto2;
 //Constante para la ruta de la API
 const API_CATEGORIA = 'http://34.125.116.235/app/api/public/categoria.php?action=';
 
@@ -10,16 +10,16 @@ document.addEventListener('DOMContentLoaded', function(){
     let params = new URLSearchParams(location.search)
     // Se obtienen los datos localizados por medio de las variables.
     idCliente = params.get('id');
-    alias = params.get('alias');
-    foto = params.get('foto');
-    isLogged(idCliente,alias,foto);
+    alias2 = params.get('alias');
+    foto2 = params.get('foto');
+    isLogged(idCliente,alias2,foto2);
 });
 //Funcion para el llenado de tablas.
 function fillCategories(dataset){
     let content = ' ';
 
     dataset.map(function(row){
-        url = `categoria.html?id=${idCliente}&alias=${alias}&foto=${foto}&idSub=${row.idcategoria}&name=${row.categoria}`;
+        url = `categoria.html?id=${idCliente}&alias=${alias2}&foto=${foto2}&idSub=${row.idcategoria}&name=${row.categoria}`;
 
         content += `
         <div class="col d-flex justify-content-center">

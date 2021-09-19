@@ -1,7 +1,9 @@
 let api_clientes;
 var id;
+var id_tmp;
 var alias;
 var foto;
+var code;
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     let params = new URLSearchParams(location.search)
@@ -39,7 +41,11 @@ document.getElementById('login-form').addEventListener('submit', function (event
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     if (response.auth == 'si') {
-                        sendVerificationCode();
+                        id_tmp = response.id_tmp;
+                        id = response.idCliente;
+                        alias = response.usuarioCliente;
+                        foto = response.fotoCliente;
+                        sendVerificationCode(response.correoCliente);
                         openModal('validarCodigo');
                     } else if (response.auth == 'no') {
                         sweetAlert(1, response.message, `../index.html?id=${response.idCliente}&alias=${response.usuarioCliente}&foto=${response.fotoCliente}`);
@@ -60,8 +66,8 @@ document.getElementById('login-form').addEventListener('submit', function (event
 });
 
 //Enviar correo
-function sendVerificationCode(){
-    fetch(api_clientes + 'sendVerificationCode', {
+function sendVerificationCode(correo){
+    fetch(`http://34.125.116.235/app/api/public/clientes.php?&action=sendVerificationCode&correo=${correo}`, {
         method: 'get'
     }).then(function(request){
         //Verificando si la petición fue correcta
@@ -70,6 +76,7 @@ function sendVerificationCode(){
                 //Verificando respuesta satisfactoria
                 if(response.status){
                     console.log(response.message);
+                    code = response.code;
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -85,7 +92,7 @@ document.getElementById('validarCodigo-form').addEventListener('submit', functio
     //Desactivar el recargar página
     event.preventDefault();
     //Capturando datos 
-    fetch(api_clientes + 'validateCode', {
+    fetch(`http://34.125.116.235/app/api/public/clientes.php?id_tmp=${id_tmp}&action=validateCode&code=${code}`, {
         method: 'post',
         body: new FormData(document.getElementById('validarCodigo-form'))
     }).then(function(request){
