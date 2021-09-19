@@ -6,7 +6,7 @@ var alias;
 var foto
 var api_pedidos;
 var idpedido;
-var endpoint_talla;
+var endpoint_tallas;
 //Cuando se carga la pagina web
 document.addEventListener('DOMContentLoaded', function(){
     let params = new URLSearchParams(location.search);
@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', function(){
     if (id > 0){
         // Constante para establecer la ruta y parámetros de comunicación con la API.
         api_pedidos = `http://34.125.116.235/app/api/public/pedidos.php?id=${id}&action=`;
-        endpoint_talla = `http://34.125.116.235/app/api/public/pedidos.php?id=${id}&action=readTallaProductoCart`;
+        endpoint_tallas = `http://34.125.116.235/app/api/public/pedidos.php?id=${id}&action=readTallaProductoCart`;
     } else {
         // Constante para establecer la ruta y parámetros de comunicación con la API.
         api_pedidos = `http://34.125.116.235/app/api/public/clientes.php?action=`;
-        endpoint_talla = `http://34.125.116.235/app/api/public/pedidos.php?action=readTallaProductoCart`;
+        endpoint_tallas = `http://34.125.116.235/app/api/public/pedidos.php?action=readTallaProductoCart`;
     }
 });
 
@@ -57,7 +57,7 @@ function readClientRecord() {
                                             <h5 class="mx-1">
                                             </h1>
 
-                                            <a href="../../app/reports/public/comprobante_compra.html?id=${row.idpedido}" target="_blank" data-tooltip="Comprabante de compra"
+                                            <a href="http://34.125.116.235/app/reports/public/comprobante_compra.php?idReport=${row.idpedido}&id=${id}" target="_blank" data-tooltip="Comprabante de compra"
                                                 class="btn btn-outline-secondary"><i class="fas fa-book"></i></a>
 
                                         </div>
@@ -279,7 +279,7 @@ function openUpdateDialog(detallepedido, cantidad, idproducto){
                 //Se verifica la respuesta de la api
                 if(response.status) {
                     readClothesDetailCart();
-                    fillSelectTallasCart(endpoint_talla, 'cbTallas', null);
+                    fillSelectTallasCart(endpoint_tallas, 'cbTallas', null);
                 } else if (response.error){
                     sweetAlert(2, response.exception,null);
                 } else {
@@ -325,7 +325,7 @@ function readClothesDetailCart() {
 
 //Función para leer los datos del producto si no es de tipo ropa
 function readNoClothesDetailCart() {
-    fillSelectTallasCart(endpoint_talla, 'cbTallas', null);
+    fillSelectTallasCart(endpoint_tallas, 'cbTallas', null);
     document.getElementById('cbTallas').className = 'd-none';
     document.getElementById('labelTalla2').className = 'd-none';
     document.getElementById('btnplus').disabled = false;
@@ -483,7 +483,7 @@ document.getElementById('updateCart').addEventListener('click', function (event)
             request.json().then(response => {
                 //Verificamos la respuesta de a la api
                 if (response.status) {
-                    sweetAlert(1, response.message,closeModal('actualizarCantidades'));
+                    sweetAlert(1, response.message,null);
                     readOrderDetail();
                 } else {
                     sweetAlert(2, response.exception, null);

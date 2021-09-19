@@ -311,8 +311,9 @@ function readClothesDetail() {
 //Función para leer los datos del producto si no es de tipo ropa
 function readNoClothesDetail() {
     fillSelectTallas(endpoint_talla, 'cbTalla', null);
-    //document.getElementById('cbTalla').className = 'd-none';
+    document.getElementById('cbTalla').className = 'd-none';
     document.getElementById('labelTalla').className = 'd-none';
+    document.getElementById('columnaCantidad').className = 'form-group d-flex mt-3 justify-content-center';
     //Fetch para leer los datos del producto
     fetch(api_pedidos + 'readNoClothesDetail', {
         method: 'post',
@@ -340,9 +341,17 @@ function readNoClothesDetail() {
                     }
                 } else {
                     sweetAlert(3, response.exception,null);
+                    let foto = '';
+                    foto = `
+                        <img src="http://34.125.116.235/resources/img/dashboard_img/producto_fotos/null" class="imagenProducto5 mt-4">
+                        `;
+                    document.getElementById('columnaFoto').innerHTML = foto;
                     document.getElementById('nombre').textContent = 'Información no disponible';
                     document.getElementById('columnaCantidad').className = 'd-none';
                     document.getElementById('agregarCart').className = 'd-none';
+                    document.getElementById('stock').textContent = '';
+                    document.getElementById('precio').textContent = '';
+                    document.getElementById('marca').textContent = '';
                 }
             })
         } else {
@@ -353,6 +362,7 @@ function readNoClothesDetail() {
 
 //Método para cambiar la cantidad en stock dependiendo de la talla seleccionada
 function showClothesStock() {
+    document.getElementById('columnaCantidad').className = 'form-group d-flex mt-3 justify-content-center';
     //Fecth para capturar el stock para productos de tipo ropa
     fetch(api_pedidos + 'showClothesStock', {
         method: 'post',
