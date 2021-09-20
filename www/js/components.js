@@ -136,7 +136,7 @@ function readRows(api) {
 function isLogged(id,alias,foto){
     var api_nav;
     if(id > 0) {
-        api_nav = `http://34.125.116.235/app/api/public/clientes.php?id=${id}&action=isLogged`;
+        api_nav = `http://34.125.116.235/app/api/public/clientes.php?action=isLogged`;
     } else {
         api_nav = `http://34.125.116.235/app/api/public/clientes.php?action=isLogged`;
     }
