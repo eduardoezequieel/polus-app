@@ -11,7 +11,10 @@
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
-    <allow-intent href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
     
     <platform name="android">
         <allow-intent href="market:*" />
