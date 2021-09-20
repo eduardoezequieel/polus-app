@@ -136,7 +136,7 @@ function readRows(api) {
 function isLogged(id,alias,foto){
     var api_nav;
     if(id > 0) {
-        api_nav = `http://34.125.116.235/app/api/public/clientes.php?action=isLogged`;
+        api_nav = `http://34.125.116.235/app/api/public/clientes.php?id=${id}&action=isLogged`;
     } else {
         api_nav = `http://34.125.116.235/app/api/public/clientes.php?action=isLogged`;
     }
@@ -234,7 +234,7 @@ function isLogged(id,alias,foto){
                                 <form id="controlesNavbar">
                                     
                                     <a href="../html/iniciar_sesion.html?id=${id}&alias=${alias}&foto=${foto}" class="btn btn-outline-light">Acceder</a>
-                                    <a href="../html/crear_cuenta.html?id=${id}" class="btn btn-outline-secondary">Registrarse</a>
+                                    <a href="../html/crear_cuenta.html?id=${id}&alias=${alias}&foto=${foto}" class="btn btn-outline-secondary">Registrarse</a>
                                     
                                 </form>
                             </div>
